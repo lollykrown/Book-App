@@ -8,6 +8,9 @@ const connection = new Sequelize('db', 'user', 'pass', {
   host: 'localhost',
   dialect: 'sqlite',
   storage: 'db.sqlite',
+  define: {
+    freezeTableName: true
+  }
 })
 
 const User = connection.define('User', {
@@ -37,19 +40,6 @@ connection
   .catch(err => {
     console.error('Unable to connect to the database:', err);
 });
-
-// connection
-//   .sync({
-//     logging: console.log,
-//     force: true
-//   })
-//   .then(() => {
-//     console.log('Connection to database established successfully.');
-//   })
-//   .catch(err => {
-//     console.error('Unable to connect to the database:', err);
-// });
-
 
 app.listen(port, () => {
   console.log('Running server on port ' + port);
