@@ -76,8 +76,8 @@ app.delete('/remove', (req, res) => {
 
 app.put('/update', (req, res) => {
   User.update({
-    name: 'Michael Keaton', 
-    password: 'password'
+    name: 'Michael Bolton', 
+    password: 'pass'
   }, { where: { id: 55 }})
       .then(rows => {
         res.json(rows);
