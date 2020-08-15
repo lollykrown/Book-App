@@ -33,14 +33,13 @@ const User = connection.define('User', {
 })
 
 app.get('/findall', (req, res) => {
-  // User.findAll({
-  //   where: {
-  //     name: {
-  //       [Op.like]: 'Dav%'
-  //     }
-  //   }
-  // })  
-  User.findAll()  
+  User.findAll({
+    where: {
+      name: {
+        [Op.like]: 'Dav%'
+      }
+    }
+  })  
   .then(user => {
     res.json(user);
   })
@@ -51,7 +50,7 @@ app.get('/findall', (req, res) => {
 })
 
 app.get('/findOne', (req, res) => {
-  User.findByPk('55')
+  User.findById('55')
       .then(user => {
         res.json(user);
       })
